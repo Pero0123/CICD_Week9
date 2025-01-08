@@ -34,4 +34,16 @@ public class PersonController {
         personService.savePerson(person);
         return new ResponseEntity<>("Person created successfully", HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePerson(@PathVariable Long id) {
+        personService.deletePerson(id);
+        return new ResponseEntity<>("Person deleted successfully", HttpStatus.OK);
+    }
+
+    @PutMapping("/{email}")
+    public ResponseEntity<String> updatePerson(@PathVariable String email, @RequestBody Person person) {
+        personService.updatePerson(email, person);
+        return new ResponseEntity<>("Person updated successfully", HttpStatus.OK);
+    }
 }
